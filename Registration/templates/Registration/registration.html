@@ -1,0 +1,17 @@
+{% extends 'Registration/template.html' %}
+    {% block body%}
+    <div class="container mt-4">
+        <h2>Registration</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div>
+                <p>{{ field.label_tag }}</p>
+                <p>{{ field }}</p>
+                <p>{{ field.errors }}</p>
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Registration</button>
+    </form>
+    </div>
+    {% endblock %}

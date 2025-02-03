@@ -1,0 +1,17 @@
+{% extends 'Registration/template.html' %}
+
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        <h2>Do you want to delete the below user?</h2>
+        <p>{{ registration.full_name }}</p>
+        <p>{{ registration.email_address }}</p>
+        <p>{{ registration.phone_number }}</p>
+        <p>{{ registration.session }}</p>
+        <p>{{ registration.dietary_preferences }}</p>
+        <div class="button-container">
+            <a href="{% url 'participants' %}"><button class="yes_button" type="submit">Yes</button></a>
+            <a href="{% url 'participants' %}"><button class="no_button" type="button">No</button></a>
+        </div>
+    </form>
+{% endblock %}

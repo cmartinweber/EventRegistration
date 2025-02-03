@@ -1,0 +1,15 @@
+{% extends 'Registration/template.html' %}
+{% block body %}
+<h2>Edit Registration</h2>
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        <p>{{ field.label_tag }}</p>
+        <p>{{ field }}</p>
+        <p>{{ field.errors }}</p>
+    </div>
+    {% endfor %}
+    <a href="{% url 'participants' %}"><button type="submit">Save Changes</button></a>
+</form>
+{% endblock %}

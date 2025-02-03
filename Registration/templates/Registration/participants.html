@@ -1,0 +1,36 @@
+{% extends 'Registration/template.html' %}
+    {% block body%}
+    <div class="container mt-4">
+        <h2>Registered Participants</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
+                    <th>Session</th>
+                    <th>Dietary Preferences</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.full_name }}</td>
+                    <td>{{ participant.email_address }}</td>
+                    <td>{{ participant.phone_number }}</td>
+                    <td>{{ participant.session }}</td>
+                    <td>{{ participant.dietary_preferences }}</td>
+                    <td><a href="{% url 'edit' pk=participant.pk%}">Edit</a></td>
+                    <td><a href="{% url 'delete' pk=participant.pk%}">Delete</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">No participants registered yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}

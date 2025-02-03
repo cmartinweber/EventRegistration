@@ -8,9 +8,9 @@ class Session(models.Model):
 
 class Registration(models.Model):
     full_name = models.CharField(max_length=100)
-    email_address = models.EmailField()
-    phone_number = models.CharField(max_length=14)
-    session = models.ForeignKey(Session, on_delete=models.SET_NULL, null=False, blank=False)
+    email_address = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=10, unique=True)
+    session = models.ForeignKey(Session, on_delete=models.CASCADE, null=False, blank=False)
     dietary_preferences = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
